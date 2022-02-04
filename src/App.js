@@ -9,35 +9,35 @@ function App() {
   const [result, setResult] = useState(0);
 
 
-  let litres = (bottles * 0.33)
-   let grams = (litres * 8 * 4.5)
-   let burning = (weight / 10)
-   let grams2 = (grams - (burning * time))
+   const litres = Number(bottles) * 0.33;
+   const grams = Number(litres) * 8 * 4.5;
+   const burning = Number(weight) / 10;
+   const grams2 = (grams - (burning * time));
   
 
   function laske(e) {
     e.preventDefault();
-    let permilles = 0;
+    let permilles;
     if (gender === 'Male') {
-      permilles = (grams2 / (weight * 0.7));
+      permilles = grams2 / (weight * 0.7);
     } else {
-      permilles = (grams2 / (weight * 0.6));
+      permilles = grams2 / (weight * 0.6);
     }
     setResult(permilles);
   }
-
 
   return (
   <form onSubmit={laske}>
     <h3>Calculating alcohol blood level</h3>
     <div>
     <label>Weight </label>
-    <input type="number" value={weight} onChange={e => setWeight(e.target.value)}/>
+    <input type="number" value={weight} onChange={(e) => setWeight(e.target.value)}/>
     </div>
     <div>
       <label>Bottles </label>
-      <select onChange={e => setBottles(e.target.value)}>
-      <option value="1">1</option>
+      <select onChange={(e) => setBottles(e.target.value)}>
+          <option value="0">0</option>
+          <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
@@ -64,8 +64,9 @@ function App() {
       </select>
       <div></div>
       <label>Time </label>
-      <select onChange= {e => setTime(e.target.value)}>
-      <option value="1">1</option>
+      <select onChange= {(e) => setTime(e.target.value)}>
+          <option value="0">0</option>
+          <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
@@ -93,12 +94,12 @@ function App() {
       </div>
       <div>
         <label>Gender </label>
-        <label><input type="radio" name="Gender" value="Male" onChange={e => setGender(e.target.value)}/>Male</label>
-        <label><input type="radio" name="Gender" value="Female" onChange={e => setGender(e.target.value)} />Female</label>
+        <label><input type="radio" name="gender" value="Male" onChange={(e) => setGender(e.target.value)}/>Male</label>
+        <label><input type="radio" name="gender" value="Female" onChange={(e) => setGender(e.target.value)} />Female</label>
         </div>
         <br></br>
         <label>Permilles </label>
-        <output>{result.toFixed(2)}</output>
+        <output>{(result.toFixed(2))}</output>
         <br></br>
         <div></div>
         <button>Calculate</button>
