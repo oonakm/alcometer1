@@ -1,3 +1,13 @@
+h3 {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-large;
+}
+
+label, output {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: medium;
+}
+
 .App {
   text-align: center;
 }
